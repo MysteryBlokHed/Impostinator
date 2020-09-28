@@ -25,6 +25,13 @@ Impostinator has a very simple UI. Just open the dropdown to view a
 list of settings it can modify, change the value with the box on the
 right, and then press the "Change Setting" button at the bottom.
 
+## Offsets
+
+Impostinator gets its pointer offsets from an `offsets.json` file,
+which is located in the src directory. When running Impostinator.exe,
+**the offsets file must be moved to the same directory as Impostinator.exe.**
+The program won't look for the file in other directories.
+
 ### Updating settings for other players
 
 If you change a setting with the program while there are other players
