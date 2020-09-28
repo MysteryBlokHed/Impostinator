@@ -26,6 +26,18 @@ namespace Impostinator
                 GameSettingsValue.DecimalPlaces = 2;
             else
                 GameSettingsValue.DecimalPlaces = 0;
+
+            // Set the value of GameSettingsValue to the target setting's current value
+            try
+            {
+                byte[] currentValue = new byte[4];
+                ProcAPI.ReadProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[GameSettingsComboBox.SelectedIndex].ToArray()), currentValue, currentValue.Length, out var read);
+
+                if (GameSettingsComboBox.SelectedIndex >= 4 && GameSettingsComboBox.SelectedIndex <= 7)
+                    GameSettingsValue.Value = (decimal)BitConverter.ToSingle(currentValue, 0);
+                else
+                    GameSettingsValue.Value = (decimal)BitConverter.ToInt32(currentValue, 0);
+            } catch { }
         }
 
         private void ChangeGameSettingsButton_Click(object sender, EventArgs e)
