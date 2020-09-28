@@ -38,8 +38,7 @@ an update to the settings for all connected players.
 To build the project yourself, you need
 [Visual Studio 2019](https://visualstudio.microsoft.com/downloads/)
 To build it, open the `.sln` file in the src/ directory, then run
-Build > Build Impostinator from the menu bar. Make sure that you are
-building for x86 and not x64.
+Build > Build Impostinator from the menu bar or press `Ctrl + B`.
 
 ## License
 
