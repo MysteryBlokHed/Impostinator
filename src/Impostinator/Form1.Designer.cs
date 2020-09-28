@@ -68,7 +68,7 @@
             this.ChangeSettingsLabel.BackColor = System.Drawing.Color.Transparent;
             this.ChangeSettingsLabel.Font = new System.Drawing.Font("Arial", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChangeSettingsLabel.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.ChangeSettingsLabel.Location = new System.Drawing.Point(129, 118);
+            this.ChangeSettingsLabel.Location = new System.Drawing.Point(147, 118);
             this.ChangeSettingsLabel.Name = "ChangeSettingsLabel";
             this.ChangeSettingsLabel.Size = new System.Drawing.Size(343, 36);
             this.ChangeSettingsLabel.TabIndex = 2;
@@ -90,7 +90,7 @@
             "Common Tasks",
             "Long Tasks",
             "Short Tasks"});
-            this.GameSettingsComboBox.Location = new System.Drawing.Point(135, 155);
+            this.GameSettingsComboBox.Location = new System.Drawing.Point(153, 155);
             this.GameSettingsComboBox.Name = "GameSettingsComboBox";
             this.GameSettingsComboBox.Size = new System.Drawing.Size(255, 21);
             this.GameSettingsComboBox.TabIndex = 3;
@@ -98,7 +98,7 @@
             // 
             // GameSettingsValue
             // 
-            this.GameSettingsValue.Location = new System.Drawing.Point(396, 156);
+            this.GameSettingsValue.Location = new System.Drawing.Point(414, 157);
             this.GameSettingsValue.Maximum = new decimal(new int[] {
             2147483647,
             0,
@@ -121,7 +121,7 @@
             // ChangeGameSettingsButton
             // 
             this.ChangeGameSettingsButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ChangeGameSettingsButton.Location = new System.Drawing.Point(135, 182);
+            this.ChangeGameSettingsButton.Location = new System.Drawing.Point(153, 182);
             this.ChangeGameSettingsButton.Name = "ChangeGameSettingsButton";
             this.ChangeGameSettingsButton.Size = new System.Drawing.Size(326, 36);
             this.ChangeGameSettingsButton.TabIndex = 5;
