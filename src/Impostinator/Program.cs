@@ -16,10 +16,14 @@
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
 using Proc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.IO;
+using System.Globalization;
+using System.Linq;
 
 namespace Impostinator
 {
@@ -50,22 +54,26 @@ namespace Impostinator
             // Get Base Address of GameAssembly.dll
             modBase = ProcAPI.GetModuleBaseAddress(proc, "GameAssembly.dll");
 
-            // Base Address for Dynamic Pointers
-            dynamicPtrBaseAddr = modBase + 0x1468910;
-
             // Offsets
+            // Read offsets.json file
+            StreamReader stream = new StreamReader("offsets.json");
+            string offsetsString = stream.ReadToEnd();
+            stream.Close();
+
+            Offsets offsetsJson = JsonConvert.DeserializeObject<Offsets>(offsetsString);
+
+            // Base Address for Dynamic Pointers
+            dynamicPtrBaseAddr = modBase + Convert.ToInt32(offsetsJson.BaseAddressOffset, 16);
+
             offsets = new List<List<int>>();
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x30 }); // Emergency Meetings
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x34 }); // Emergency Cooldown
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x44 }); // Discussion Time
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x48 }); // Voting Time
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x14 }); // Player Speed
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x18 }); // Crewmate Vision
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x1C }); // Impostor Vision
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x20 }); // Kill Cooldown
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x24 }); // Common Tasks
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x28 }); // Long Tasks
-            offsets.Add(new List<int>() { 0x5C, 0x4, 0x2C }); // Short Tasks
+
+            foreach (KeyValuePair<string, List<string>> offsetList in offsetsJson.GameSettings)
+            {
+                List<int> offsetInts = new List<int>();
+                foreach(string offset in offsetList.Value)
+                    offsetInts.Add(Convert.ToInt32(offset, 16));
+                offsets.Add(offsetInts);
+            }
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

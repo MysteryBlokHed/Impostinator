@@ -112,11 +112,6 @@
             this.GameSettingsValue.Name = "GameSettingsValue";
             this.GameSettingsValue.Size = new System.Drawing.Size(65, 20);
             this.GameSettingsValue.TabIndex = 4;
-            this.GameSettingsValue.Value = new decimal(new int[] {
-            5,
-            0,
-            0,
-            0});
             // 
             // ChangeGameSettingsButton
             // 
