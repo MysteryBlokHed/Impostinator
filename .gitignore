@@ -1,0 +1,6 @@
+# Cache/options directory
+.vs/
+
+# Build
+bin/
+obj/
