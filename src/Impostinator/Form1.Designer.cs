@@ -129,7 +129,7 @@
             this.AcceptButton = this.ChangeGameSettingsButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Impostinator.Properties.Resources.background;
+            this.BackgroundImage = global::Impostinator.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(620, 250);
             this.Controls.Add(this.ChangeGameSettingsButton);
