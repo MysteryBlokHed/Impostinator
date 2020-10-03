@@ -54,23 +54,31 @@ namespace Impostinator
 
             // Offsets
             // Read offsets.json file
-            StreamReader stream = new StreamReader("offsets.json");
-            string offsetsString = stream.ReadToEnd();
-            stream.Close();
-
-            Offsets offsetsJson = JsonConvert.DeserializeObject<Offsets>(offsetsString);
-
-            // Base Address for Dynamic Pointers
-            dynamicPtrBaseAddr = modBase + Convert.ToInt32(offsetsJson.BaseAddressOffset, 16);
-
-            offsets = new List<List<int>>();
-
-            foreach (KeyValuePair<string, List<string>> offsetList in offsetsJson.GameSettings)
+            try
             {
-                List<int> offsetInts = new List<int>();
-                foreach(string offset in offsetList.Value)
-                    offsetInts.Add(Convert.ToInt32(offset, 16));
-                offsets.Add(offsetInts);
+                StreamReader stream = new StreamReader("offsets.json");
+                string offsetsString = stream.ReadToEnd();
+                stream.Close();
+
+                Offsets offsetsJson = JsonConvert.DeserializeObject<Offsets>(offsetsString);
+
+                // Base Address for Dynamic Pointers
+                dynamicPtrBaseAddr = modBase + Convert.ToInt32(offsetsJson.BaseAddressOffset, 16);
+
+                offsets = new List<List<int>>();
+
+                foreach (KeyValuePair<string, List<string>> offsetList in offsetsJson.GameSettings)
+                {
+                    List<int> offsetInts = new List<int>();
+                    foreach (string offset in offsetList.Value)
+                        offsetInts.Add(Convert.ToInt32(offset, 16));
+                    offsets.Add(offsetInts);
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                MessageBox.Show("Could not find offsets.json file. Make sure that it's next to the executable.", "File Not Found", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                System.Environment.Exit(0);
             }
 
             Application.EnableVisualStyles();
