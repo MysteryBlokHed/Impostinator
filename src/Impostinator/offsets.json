@@ -1,5 +1,5 @@
 ﻿{
-    "BaseAddressOffset": "0x1468910",
+    "BaseAddressOffset": "0x144BB70",
     "GameSettings": {
         "EmergencyMeetings": [ "0x5C", "0x4", "0x30" ],
         "EmergencyCooldown": [ "0x5C", "0x4", "0x34" ],
