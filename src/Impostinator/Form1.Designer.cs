@@ -36,6 +36,8 @@
             this.GameSettingsValue = new System.Windows.Forms.NumericUpDown();
             this.ChangeGameSettingsButton = new System.Windows.Forms.Button();
             this.EnumValuesComboBox = new System.Windows.Forms.ComboBox();
+            this.SaveSettingsButton = new System.Windows.Forms.Button();
+            this.RestoreSettingsButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.GameSettingsValue)).BeginInit();
             this.SuspendLayout();
             // 
@@ -138,8 +140,29 @@
             this.EnumValuesComboBox.Size = new System.Drawing.Size(123, 21);
             this.EnumValuesComboBox.TabIndex = 6;
             this.EnumValuesComboBox.Visible = false;
+            this.EnumValuesComboBox.SelectedIndexChanged += new System.EventHandler(this.EnumValuesComboBox_SelectedIndexChanged);
             // 
-            // Form1
+            // SaveSettingsButton
+            // 
+            this.SaveSettingsButton.Location = new System.Drawing.Point(12, 163);
+            this.SaveSettingsButton.Name = "SaveSettingsButton";
+            this.SaveSettingsButton.Size = new System.Drawing.Size(135, 23);
+            this.SaveSettingsButton.TabIndex = 7;
+            this.SaveSettingsButton.Text = "Save Settings";
+            this.SaveSettingsButton.UseVisualStyleBackColor = true;
+            this.SaveSettingsButton.Click += new System.EventHandler(this.SaveSettingsButton_Click);
+            // 
+            // RestoreSettingsButton
+            // 
+            this.RestoreSettingsButton.Location = new System.Drawing.Point(12, 192);
+            this.RestoreSettingsButton.Name = "RestoreSettingsButton";
+            this.RestoreSettingsButton.Size = new System.Drawing.Size(135, 23);
+            this.RestoreSettingsButton.TabIndex = 8;
+            this.RestoreSettingsButton.Text = "Restore Settings";
+            this.RestoreSettingsButton.UseVisualStyleBackColor = true;
+            this.RestoreSettingsButton.Click += new System.EventHandler(this.RestoreSettingsButton_Click);
+            // 
+            // Impostinator
             // 
             this.AcceptButton = this.ChangeGameSettingsButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -147,6 +170,8 @@
             this.BackgroundImage = global::Impostinator.Properties.Resources.Background;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(620, 250);
+            this.Controls.Add(this.RestoreSettingsButton);
+            this.Controls.Add(this.SaveSettingsButton);
             this.Controls.Add(this.EnumValuesComboBox);
             this.Controls.Add(this.ChangeGameSettingsButton);
             this.Controls.Add(this.GameSettingsValue);
@@ -174,5 +199,7 @@
         private System.Windows.Forms.NumericUpDown GameSettingsValue;
         private System.Windows.Forms.Button ChangeGameSettingsButton;
         private System.Windows.Forms.ComboBox EnumValuesComboBox;
+        private System.Windows.Forms.Button SaveSettingsButton;
+        private System.Windows.Forms.Button RestoreSettingsButton;
     }
 }

@@ -2,9 +2,9 @@
 
 namespace Impostinator
 {
-    class Offsets
+    struct Offsets
     {
-        public string BaseAddressOffset { get; set; }
-        public Dictionary<string, List<string>> GameSettings { get; set; }
+        public string BaseAddressOffset;
+        public Dictionary<string, List<string>> GameSettings;
     }
 }
