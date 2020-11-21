@@ -1,24 +1,33 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
 
 namespace Impostinator
 {
-    struct SavedConfig
+    class SavedConfig
     {
-        public byte ConfirmEjects;
-        public int EmergencyMeetings;
-        public byte AnonymousVotes;
-        public int EmergencyCooldown;
-        public int DiscussionTime;
-        public int VotingTime;
-        public float PlayerSpeed;
-        public float CrewmateVision;
-        public float ImpostorVision;
-        public float KillCooldown;
-        public int KillDistance;
-        public int TaskBarUpdates;
-        public byte VisualTasks;
-        public int CommonTasks;
-        public int LongTasks;
-        public int ShortTasks;
+        public ArrayList settings;
+
+        public SavedConfig()
+        {
+            // Initialize data types
+            settings = new ArrayList()
+            {
+                new byte(),
+                new int(),
+                new byte(),
+                new int(),
+                new int(),
+                new int(),
+                new float(),
+                new float(),
+                new float(),
+                new float(),
+                new int(),
+                new int(),
+                new byte(),
+                new int(),
+                new int(),
+                new int(),
+            };
+        }
     }
 }

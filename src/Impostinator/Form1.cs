@@ -34,19 +34,7 @@ namespace Impostinator
                     {
                         byte[] currentValue = new byte[1];
                         ProcAPI.ReadProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[i].ToArray()), currentValue, currentValue.Length, out var read);
-
-                        switch (i)
-                        {
-                            case 0:
-                                current.ConfirmEjects = currentValue[0];
-                                break;
-                            case 2:
-                                current.AnonymousVotes = currentValue[0];
-                                break;
-                            case 12:
-                                current.VisualTasks = currentValue[0];
-                                break;
-                        }
+                        current.settings[i] = currentValue[0];
                     }
                     // Other
                     else
@@ -58,58 +46,13 @@ namespace Impostinator
                         if (i >= 6 && i <= 9)
                         {
                             float currentF = BitConverter.ToSingle(currentValue, 0);
-
-                            switch (i)
-                            {
-                                case 6:
-                                    current.PlayerSpeed = currentF;
-                                    break;
-                                case 7:
-                                    current.CrewmateVision = currentF;
-                                    break;
-                                case 8:
-                                    current.ImpostorVision = currentF;
-                                    break;
-                                case 9:
-                                    current.KillCooldown = currentF;
-                                    break;
-                            }
+                            current.settings[i] = currentF;
                         }
                         // Ints
                         else
                         {
                             int currentI = BitConverter.ToInt32(currentValue, 0);
-
-                            switch (i)
-                            {
-                                case 1:
-                                    current.EmergencyMeetings = currentI;
-                                    break;
-                                case 3:
-                                    current.EmergencyCooldown = currentI;
-                                    break;
-                                case 4:
-                                    current.DiscussionTime = currentI;
-                                    break;
-                                case 5:
-                                    current.VotingTime = currentI;
-                                    break;
-                                case 10:
-                                    current.KillDistance = currentI;
-                                    break;
-                                case 11:
-                                    current.TaskBarUpdates = currentI;
-                                    break;
-                                case 13:
-                                    current.CommonTasks = currentI;
-                                    break;
-                                case 14:
-                                    current.LongTasks = currentI;
-                                    break;
-                                case 15:
-                                    current.ShortTasks = currentI;
-                                    break;
-                            }
+                            current.settings[i] = currentI;
                         }
                     }
                 }
@@ -212,78 +155,21 @@ namespace Impostinator
             {
                 float newValue = (float)GameSettingsValue.Value;
                 ProcAPI.WriteProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[GameSettingsComboBox.SelectedIndex].ToArray()), newValue, 4, out _);
-
-                switch(GameSettingsComboBox.SelectedIndex)
-                {
-                    case 6:
-                        current.PlayerSpeed = newValue;
-                        break;
-                    case 7:
-                        current.CrewmateVision = newValue;
-                        break;
-                    case 8:
-                        current.ImpostorVision = newValue;
-                        break;
-                    case 9:
-                        current.KillCooldown = newValue;
-                        break;
-                }
+                current.settings[GameSettingsComboBox.SelectedIndex] = newValue;
             }
             // Boolean values
             else if (GameSettingsComboBox.SelectedIndex == 0 || GameSettingsComboBox.SelectedIndex == 2 || GameSettingsComboBox.SelectedIndex == 12)
             {
                 byte newValue = (byte)GameSettingsValue.Value;
                 ProcAPI.WriteProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[GameSettingsComboBox.SelectedIndex].ToArray()), newValue, 1, out _);
-
-                switch(GameSettingsComboBox.SelectedIndex)
-                {
-                    case 0:
-                        current.ConfirmEjects = newValue;
-                        break;
-                    case 2:
-                        current.AnonymousVotes = newValue;
-                        break;
-                    case 12:
-                        current.VisualTasks = newValue;
-                        break;
-                }
+                current.settings[GameSettingsComboBox.SelectedIndex] = newValue;
             }
             // Integer values
             else
             {
                 int newValue = (int)GameSettingsValue.Value;
                 ProcAPI.WriteProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[GameSettingsComboBox.SelectedIndex].ToArray()), newValue, 4, out _);
-
-                switch (GameSettingsComboBox.SelectedIndex)
-                {
-                    case 1:
-                        current.EmergencyMeetings = newValue;
-                        break;
-                    case 3:
-                        current.EmergencyCooldown = newValue;
-                        break;
-                    case 4:
-                        current.DiscussionTime = newValue;
-                        break;
-                    case 5:
-                        current.VotingTime = newValue;
-                        break;
-                    case 10:
-                        current.KillDistance = newValue;
-                        break;
-                    case 11:
-                        current.TaskBarUpdates = newValue;
-                        break;
-                    case 13:
-                        current.CommonTasks = newValue;
-                        break;
-                    case 14:
-                        current.LongTasks = newValue;
-                        break;
-                    case 15:
-                        current.ShortTasks = newValue;
-                        break;
-                }
+                current.settings[GameSettingsComboBox.SelectedIndex] = newValue;
             }
         }
 
@@ -301,83 +187,21 @@ namespace Impostinator
                 if (i == 0 || i == 2 || i == 12)
                 {
                     byte newValue = 0;
-
-                    switch (i)
-                    {
-                        case 0:
-                            newValue = current.ConfirmEjects;
-                            break;
-                        case 2:
-                            newValue = current.AnonymousVotes;
-                            break;
-                        case 12:
-                            newValue = current.VisualTasks;
-                            break;
-                    }
-
+                    newValue = (byte)current.settings[i];
                     ProcAPI.WriteProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[i].ToArray()), newValue, 1, out _);
                 }
                 // Floats
                 else if(i >= 6 && i <= 9)
                 {
                     float newValue = 0;
-
-                    switch(i)
-                    {
-                        case 6:
-                            newValue = current.PlayerSpeed;
-                            break;
-                        case 7:
-                            newValue = current.CrewmateVision;
-                            break;
-                        case 8:
-                            newValue = current.ImpostorVision;
-                            break;
-                        case 9:
-                            newValue = current.KillCooldown;
-                            break;
-                    }
-
-                    Console.WriteLine(newValue);
-
+                    newValue = (float)current.settings[i];
                     ProcAPI.WriteProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[i].ToArray()), newValue, 4, out _);
                 }
                 // Integers
                 else
                 {
                     int newValue = 0;
-
-                    switch(i)
-                    {
-                        case 1:
-                            newValue = current.EmergencyMeetings;
-                            break;
-                        case 3:
-                            newValue = current.EmergencyCooldown;
-                            break;
-                        case 4:
-                            newValue = current.DiscussionTime;
-                            break;
-                        case 5:
-                            newValue = current.VotingTime;
-                            break;
-                        case 10:
-                            newValue = current.KillDistance;
-                            break;
-                        case 11:
-                            newValue = current.TaskBarUpdates;
-                            break;
-                        case 13:
-                            newValue = current.CommonTasks;
-                            break;
-                        case 14:
-                            newValue = current.LongTasks;
-                            break;
-                        case 15:
-                            newValue = current.ShortTasks;
-                            break;
-                    }
-
+                    newValue = (int)current.settings[i];
                     ProcAPI.WriteProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[i].ToArray()), newValue, 4, out _);
                 }
             }
