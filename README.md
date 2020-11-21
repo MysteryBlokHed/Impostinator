@@ -37,7 +37,7 @@ which is located in the src directory. When running Impostinator.exe,
 **the offsets file must be moved to the same directory as Impostinator.exe.**
 The program won't look for the file in other directories.
 
-### Updating settings for other players
+## Updating settings for other players
 
 If you change a setting with the program while there are other players
 in the lobby, the change will not take effect for them. To update the
@@ -54,5 +54,5 @@ Build > Build Impostinator from the menu bar or press `Ctrl + B`.
 
 ## License
 
-This software uses the
+This software is licensed under the
 [GNU General Public License v3](https://choosealicense.com/licenses/gpl-3.0/).
