@@ -5,9 +5,11 @@ An external hack for Among Us written in C#.
 ## What it can do
 
 This hack is currently able to change the following game settings
-past their limits:
+to any value:
 
+- Confirm Ejects (On/Off)
 - Emergency Meeting Count
+- Anonymous Votes (On/Off)
 - Emergency Cooldown
 - Discussion Time
 - Voting Time
@@ -15,6 +17,9 @@ past their limits:
 - Crewmate Vision
 - Impostor Vision
 - Kill Cooldown
+- Kill Distance (Short/Medium/Long)
+- Taskbar Updates (Always/Meetings/Never)
+- Visual Tasks (On/Off)
 - Common Task Count
 - Long Task Count
 - Short Task Count
@@ -38,7 +43,7 @@ If you change a setting with the program while there are other players
 in the lobby, the change will not take effect for them. To update the
 settings for other players, just update the settings with the program,
 then change an unrelated setting from the menu in-game. This will cause
-an update to the settings for all connected players. 
+an update to the settings for all connected players.
 
 ## Building
 
