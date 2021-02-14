@@ -1,5 +1,5 @@
 ﻿{
-    "BaseAddressOffset": "0x144BB70",
+    "BaseAddressOffset": "0x1C57F7C",
     "GameSettings": {
         "ConfirmEjects": [ "0x5C", "0x4", "0x4C" ],
         "EmergencyMeetings": [ "0x5C", "0x4", "0x30" ],
