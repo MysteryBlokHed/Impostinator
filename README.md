@@ -23,6 +23,9 @@ to any value:
 - Common Task Count
 - Long Task Count
 - Short Task Count
+- Impostor Count
+- Current Map
+- Ghost Tasks
 
 ## Use
 
