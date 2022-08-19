@@ -27,6 +27,9 @@ namespace Impostinator
                 new int(),
                 new int(),
                 new int(),
+                new int(),
+                new int(),
+                new byte(),
             };
         }
     }

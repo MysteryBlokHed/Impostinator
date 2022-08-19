@@ -30,7 +30,7 @@ namespace Impostinator
                 try
                 {
                     // Booleans
-                    if (i == 0 || i == 2 || i == 12)
+                    if (i == 0 || i == 2 || i == 12 || i == 18)
                     {
                         byte[] currentValue = new byte[1];
                         ProcAPI.ReadProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[i].ToArray()), currentValue, currentValue.Length, out var read);
@@ -83,6 +83,8 @@ namespace Impostinator
                 case 10:
                 case 11:
                 case 12:
+                case 17:
+                case 18:
                     GameSettingsValue.Enabled = false;
                     EnumValuesComboBox.Visible = true;
 
@@ -94,6 +96,7 @@ namespace Impostinator
                         case 0:
                         case 2:
                         case 12:
+                        case 18:
                             EnumValuesComboBox.Items.Add("Off");
                             EnumValuesComboBox.Items.Add("On");
                             break;
@@ -107,6 +110,13 @@ namespace Impostinator
                             EnumValuesComboBox.Items.Add("Meetings");
                             EnumValuesComboBox.Items.Add("Never");
                             break;
+                        case 17:
+                            EnumValuesComboBox.Items.Add("The Skeld");
+                            EnumValuesComboBox.Items.Add("MIRA HQ");
+                            EnumValuesComboBox.Items.Add("Polus");
+                            EnumValuesComboBox.Items.Add("The Skeld Backwards?");
+                            EnumValuesComboBox.Items.Add("The Airship");
+                            break;
                     }
                     break;
                 default:
@@ -116,7 +126,7 @@ namespace Impostinator
             // Set the value of GameSettingsValue to the target setting's current value
             try
             {
-                if (GameSettingsComboBox.SelectedIndex == 0 || GameSettingsComboBox.SelectedIndex == 2 || GameSettingsComboBox.SelectedIndex == 12)
+                if (GameSettingsComboBox.SelectedIndex == 0 || GameSettingsComboBox.SelectedIndex == 2 || GameSettingsComboBox.SelectedIndex == 12 || GameSettingsComboBox.SelectedIndex == 18)
                 {
                     byte[] currentValue = new byte[1];
                     ProcAPI.ReadProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[GameSettingsComboBox.SelectedIndex].ToArray()), currentValue, currentValue.Length, out var read);
@@ -158,7 +168,7 @@ namespace Impostinator
                 current.settings[GameSettingsComboBox.SelectedIndex] = newValue;
             }
             // Boolean values
-            else if (GameSettingsComboBox.SelectedIndex == 0 || GameSettingsComboBox.SelectedIndex == 2 || GameSettingsComboBox.SelectedIndex == 12)
+            else if (GameSettingsComboBox.SelectedIndex == 0 || GameSettingsComboBox.SelectedIndex == 2 || GameSettingsComboBox.SelectedIndex == 12 || GameSettingsComboBox.SelectedIndex == 18)
             {
                 byte newValue = (byte)GameSettingsValue.Value;
                 ProcAPI.WriteProcessMemory(Program.hProc, ProcAPI.FindDMAAddy(Program.hProc, Program.dynamicPtrBaseAddr, Program.offsets[GameSettingsComboBox.SelectedIndex].ToArray()), newValue, 1, out _);
@@ -184,7 +194,7 @@ namespace Impostinator
             for (int i = 0; i < Program.offsets.Count; i++)
             {
                 // Booleans
-                if (i == 0 || i == 2 || i == 12)
+                if (i == 0 || i == 2 || i == 12 || i == 18)
                 {
                     byte newValue = 0;
                     newValue = (byte)current.settings[i];

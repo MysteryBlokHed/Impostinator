@@ -97,7 +97,10 @@
             "Visual Tasks",
             "Common Tasks",
             "Long Tasks",
-            "Short Tasks"});
+            "Short Tasks",
+            "Impostors",
+            "Map",
+            "Ghosts do Tasks"});
             this.GameSettingsComboBox.Location = new System.Drawing.Point(153, 155);
             this.GameSettingsComboBox.Name = "GameSettingsComboBox";
             this.GameSettingsComboBox.Size = new System.Drawing.Size(255, 21);
